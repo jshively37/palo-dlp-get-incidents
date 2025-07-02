@@ -1,5 +1,5 @@
 # Overview
-This Python script retrieves DLP incidents from Prisma Access and converts them to a csv.
+This Python script retrieves DLP incidents from Prisma Access and outputs them to a csv.
 
 ## Requirements
 ```
