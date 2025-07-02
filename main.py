@@ -17,11 +17,6 @@ AUTH_HEADERS = {
     "Accept": "application/json",
 }
 
-load_dotenv()
-TSG_ID = os.environ.get("TSG_ID")
-CLIENT_ID = os.environ.get("CLIENT_ID")
-SECRET_ID = os.environ.get("SECRET_ID")
-
 FIELDNAMES = [
     "action",
     "app_id",
@@ -39,6 +34,14 @@ FIELDNAMES = [
     "tenant_id",
     "user",
 ]
+
+OUTPUT_DIR = "output/"
+OUTPUT_FILE = f"output.csv"
+
+load_dotenv()
+TSG_ID = os.environ.get("TSG_ID")
+CLIENT_ID = os.environ.get("CLIENT_ID")
+SECRET_ID = os.environ.get("SECRET_ID")
 
 
 def create_token():
@@ -61,7 +64,7 @@ def get_dlp_incidents(page_size: int = 2000):
 if __name__ == "__main__":
     create_token()
     incidents = get_dlp_incidents()
-    csv_file = "output/output.csv"
+    csv_file = OUTPUT_DIR + OUTPUT_FILE
     with open(csv_file, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=FIELDNAMES, extrasaction="ignore")
         writer.writeheader()
